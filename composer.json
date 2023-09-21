@@ -53,7 +53,7 @@
         "pint": [
             "Composer\\Config::disableProcessTimeout",
             "./vendor/bin/pint"
-        ],
+        ]
     },
     "extra": {
         "laravel": {

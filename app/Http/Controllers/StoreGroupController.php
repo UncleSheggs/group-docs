@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Models\Group;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
-use App\Http\Resources\GroupResource;
 use App\Http\Requests\StoreGroupRequest;
+use App\Http\Resources\GroupResource;
+use App\Models\Group;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class StoreGroupController extends Controller
+final class StoreGroupController extends Controller
 {
     /**
      * Handle the incoming request.

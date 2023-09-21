@@ -1,16 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GroupCollection;
+use App\Http\Resources\GroupResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
-use App\Http\Resources\GroupResource;
-use App\Http\Resources\GroupCollection;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class IndexGroupController
+final class IndexGroupController
 {
     /**
      * Group list with members.
