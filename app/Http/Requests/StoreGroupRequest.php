@@ -32,4 +32,11 @@ final class StoreGroupRequest extends FormRequest
             'member_ids.*' => ['integer', 'exists:users,id'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'member_ids.*.exists' => 'One or more members id is invalid'
+        ];
+    }
 }
