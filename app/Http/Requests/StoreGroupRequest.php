@@ -25,7 +25,7 @@ final class StoreGroupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // intended name of the Group
+            // Intended name for the Group
             'name' => ['required', 'string', 'max:50'],
             // Array of group members user ids
             'member_ids' => ['required', 'array', 'min:2', 'max:5'],
