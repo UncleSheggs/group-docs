@@ -14,12 +14,14 @@ use Symfony\Component\HttpFoundation\Response;
 final class StoreGroupController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
+     * Add members to a Group.
      */
     public function __invoke(StoreGroupRequest $request): JsonResponse
     {
-        $group = Group::query()->create(['name' => $request->validated()['name']]);
+        $group = Group::query()
+            ->create([
+                'name' => $request->validated()['name']
+            ]);
         $group->users()->sync($request->validated()['member_ids']);
         /**
          * @status 201
