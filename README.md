@@ -16,7 +16,7 @@ The app allows you to:
 6. change all DB_~ configurations in the newly created .env file to the required values for your machine
 7. Run `php artisan migrate:fresh --seed` in you CLI to seed the database with 100 sample users, and 25 groups already populated with members. 
 8. Run `php artisan key:generate` to generate an encryption key for the application.
-9. run `php artisan serve` to start the application.
+9. Run `php artisan serve` to start the application.
 
 
 ## Final Notes
