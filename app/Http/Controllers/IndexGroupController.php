@@ -13,7 +13,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 final class IndexGroupController
 {
     /**
-     * Group list with members.
+     * list all groups with their members.
+     *
      */
     public function __invoke(Request $request): JsonResource
     {
@@ -21,7 +22,7 @@ final class IndexGroupController
             ->withCount('users')
             ->with('users:id,name');
 
-        return GroupResource::collection($groups->cursorPaginate(10));
-        // return new GroupCollection($groups->cursorPaginate(10));
+        return GroupResource::collection($groups->cursorPaginate(5));
+        // return new GroupCollection($groups->cursorPaginate(5));
     }
 }
