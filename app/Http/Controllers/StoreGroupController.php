@@ -19,7 +19,6 @@ class StoreGroupController extends Controller
     public function __invoke(StoreGroupRequest $request): JsonResponse
     {
         $group = Group::query()->create(['name' => $request->validated()['name']]);
-
         $group->users()->sync($request->validated()['member_ids']);
         /**
          * @status 201
@@ -29,7 +28,6 @@ class StoreGroupController extends Controller
             new GroupResource($group->loadCount('users')->load('users')),
             Response::HTTP_CREATED
         );
-
 
     }
 }
