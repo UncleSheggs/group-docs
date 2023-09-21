@@ -20,7 +20,8 @@ final class IndexGroupController
     {
         $groups = Group::query()
             ->withCount('users')
-            ->with('users:id,name');
+            ->with('users:id,name')
+            ->latest();
 
         return GroupResource::collection($groups->cursorPaginate(5));
         // return new GroupCollection($groups->cursorPaginate(5));
