@@ -23,7 +23,7 @@ final class IndexGroupController
             ->with('users:id,name')
             ->latest();
 
-        return GroupResource::collection($groups->cursorPaginate(5));
-        // return new GroupCollection($groups->cursorPaginate(5));
+        return GroupResource::collection($groups->simplePaginate(5));
+        // return new GroupCollection($groups->simplePaginate(5));
     }
 }
