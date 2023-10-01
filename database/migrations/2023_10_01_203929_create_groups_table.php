@@ -12,12 +12,11 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('group_user', function (Blueprint $table): void {
+        Schema::create('groups', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId(column: 'group_id')->constrained();
-            $table->foreignId(column: 'user_id')->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+            $table->foreignId(column: 'service_id');
+            $table->string(column: 'name', length: 50);
+            $table->string(column: 'interval', length: 9);
             $table->engine = 'InnoDB';
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('group_user');
+        Schema::dropIfExists('groups');
     }
 };
