@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 final class Handler extends ExceptionHandler
 {
@@ -27,6 +29,24 @@ final class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e): void {
 
+        });
+
+        $this->renderable(function (\Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException $exception, $request) {
+             if ($request->expectsJson()) {
+                return new JsonResponse(
+                    ['error' => 'You are not authorized'],
+                    Response::HTTP_UNAUTHORIZED
+                );
+             }
+        });
+
+        $this->renderable(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $exception, $request) {
+             if ($request->expectsJson()) {
+                return new JsonResponse(
+                    ['error' => 'Resource Not Found'],
+                    Response::HTTP_NOT_FOUND
+                );
+             }
         });
     }
 }

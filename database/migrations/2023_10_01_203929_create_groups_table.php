@@ -14,9 +14,13 @@ return new class () extends Migration {
     {
         Schema::create('groups', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId(column: 'service_id');
+            // $table->foreignId(column: 'user_id')
+            //     ->constrained();
+            $table->foreignId(column: 'service_id')
+                ->constrained();
             $table->string(column: 'name', length: 50);
             $table->string(column: 'interval', length: 9);
+            $table->tinyInteger(column: 'limit');
             $table->engine = 'InnoDB';
             $table->timestamps();
         });

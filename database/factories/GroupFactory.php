@@ -22,6 +22,8 @@ final class GroupFactory extends Factory
     {
         return [
             'name' =>  Str::of(Str::remove(',', fake()->catchPhrase()))->words(1, ' ' . Arr::random(['Team', 'Group', 'Crew', 'Tribe'])),
+            'interval' => fake()->randomElement(\App\Enums\PaymentInterval::values()),
+            'limit' => fake()->numberBetween(2, 5)
         ];
     }
 }

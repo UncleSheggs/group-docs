@@ -19,10 +19,11 @@ final class GroupResource extends JsonResource
         return [
             'id' => $this->id,
             'group_name' => $this->name,
+            'type' => $this->service->type,
             /** @var integer $members_count. */
             'members_count' => $this->users_count,
-            'members' => UserResource::collection($this->whenLoaded('users'))
-
+            'members' => UserResource::collection($this->whenLoaded('users')),
+            'pending_members' => UserResource::collection($this->whenLoaded('pending_members'))
         ];
     }
 }

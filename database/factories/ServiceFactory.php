@@ -1,13 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Service>
  */
-class ServiceFactory extends Factory
+final class ServiceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +20,9 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // 'name' => fake()->randomElement(['rent', 'subscription']),
+            'name' => Arr::random(['rent', 'subscription']),
+            'acceptance_criteria' => fake()->randomElement(['email', 'mobile', null]),
         ];
     }
 }

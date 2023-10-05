@@ -12,7 +12,7 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('group_user', function (Blueprint $table): void {
+        Schema::create('memberships', function (Blueprint $table): void {
             $table->id();
             $table->foreignId(column: 'group_id')->constrained();
             $table->foreignId(column: 'user_id')->constrained()
@@ -20,7 +20,7 @@ return new class () extends Migration {
                 ->cascadeOnDelete();
             $table->string(column: 'role', length: 6);
             $table->string(column: 'status', length: 7)
-                ->default(\App\Enums\JoinStatus::PENDING->value);
+                ->default(\App\Enums\MembershipStatus::PENDING->value);
             $table->engine = 'InnoDB';
             $table->timestamps();
         });
